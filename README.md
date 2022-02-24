@@ -1,4 +1,4 @@
-# When change to new computer and can't push new repo to new repo on GitHub
+## When change to new computer and can't push new repo to new repo on GitHub
 ### ERROR: 
 ```
 git@github.com: Permission denied (publickey).
@@ -13,3 +13,6 @@ and the repository exists.
 2. Then type `cat ~/.ssh/id_rsa.pub` or `cat ~/.ssh/id_dsa.pub`. copy the whole string including your email
 3. open GitHub -> setting -> SSH key -> generate new SSH -> paste the string into SSH key section and save
 4. git add. commit and push
+
+## SCROLL BAR
+[Link](https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp)
