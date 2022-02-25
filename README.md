@@ -36,3 +36,17 @@ and the repository exists.
 <div class="example">Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling.. Some text to enable scrolling..  </div>
 
 ```
+
+## MAX-WIDTH
+- set the width of the parent `div` to
+```
+width: 100%;
+overflow: hidden;
+```
+- set the second `div` to 
+```
+width: 80%; (what ever width desired)
+max-width: 1220px;
+margin: 0;
+padding: 2% 0;
+```
