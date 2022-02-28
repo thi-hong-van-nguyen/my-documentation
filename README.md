@@ -50,3 +50,18 @@ max-width: 1220px;
 margin: 0;
 padding: 2% 0;
 ```
+
+## SET HEIGHT TO 100VH:
+```
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0
+}
+
+.parent-div {
+  (min-)height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+```
