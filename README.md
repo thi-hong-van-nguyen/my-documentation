@@ -65,3 +65,19 @@ html {
   overflow-x: hidden;
   overflow-y: hidden;
 ```
+
+## EXPAND/ COLLAPSE ANIMATION
+```
+.tasks-container {
+  width: 100%;
+  margin: auto;
+  max-height: 3000px;
+  transition: max-height 0.5s ease-in;
+  overflow: hidden;
+}
+
+.hidden {
+  max-height: 330px;
+  transition: max-height 0.3s ease-out;
+}
+```
