@@ -81,3 +81,83 @@ html {
   transition: max-height 0.3s ease-out;
 }
 ```
+
+## Promise, async await
+- Promise basic:
+```
+const codeBlocker = () => {
+    return new Promise((resolve, reject)=> {
+        let i = 0;
+        while(i< 1000000){i++};
+        resolve("billion loops done")
+    })
+}
+
+console.log("console log 1")
+codeBlocker().then(log)
+console.log("console log 2")
+```
+result:
+console log 1 => `Elapse: 0ms`
+console log 2  => `Elapse: 730ms` => The rum time is deplayed because the while loop blocks the main thread
+billions loops done  => `Elapse: 731ms`
+
+### Solution:
+- put the while loops inside of the Promises call back, that way other operations won't be block by the loops
+- Do this instead:
+```
+const codeBlocker = () => {
+    return Promise.resolve().then(v => {
+        let i = 0;
+        while(i< 1000000){i++};
+        return "billion loops done"
+    })
+}
+```
+
+- We can either use `async` keyword (`async function Func(){}`), or `return Promise.resolve()`
+
+### async await:
+```
+const makeSmoothie = async () => {
+    const a = await getFruit("pineapple");
+    const b = await getFruit("strawberry");
+
+    return [a, b]
+}
+```
+- Above code will make b wait for a which double waiting time, so in order to make them run concurrently, we can use `Promise.all`:
+- ```
+const makeSmoothie = async () => {
+    try{
+        const a = await getFruit("pineapple");
+        const b = await getFruit("strawberry");
+        const smothie = await Promise.all([a, b]);
+        return smothie
+    } catch (err) {
+        console.log(err);
+        return "error message"
+    }
+}
+
+makeSmoothie().then().catch(err => console.log({err}))
+```
+
+### async await and foor loops, map
+- If we code something like `list.map(item => await...)`, it won't work. We need to use for loop instead
+```
+const smoothie = async () => {
+    for await (const fruit of smothie) {
+        console.log(fruit)
+    }
+}
+```
+- We can also use async await for if statement:
+```
+
+const fruitInspection = async () => {
+    if (await getFruit('peach') === "peach"){
+        console.log("it is a peach")
+    }
+}
+```
