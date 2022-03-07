@@ -82,7 +82,7 @@ html {
 }
 ```
 
-## Promise, async await
+## PROMISE, ASYNC AWAIT
 - Promise basic:
 ```
 const codeBlocker = () => {
