@@ -130,8 +130,8 @@ const makeSmoothie = async () => {
 ```
 const makeSmoothie = async () => {
     try{
-        const a = await getFruit("pineapple");
-        const b = await getFruit("strawberry");
+        const a = getFruit("pineapple");
+        const b = getFruit("strawberry");
         const smothie = await Promise.all([a, b]);
         return smothie
     } catch (err) {
