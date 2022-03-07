@@ -127,7 +127,7 @@ const makeSmoothie = async () => {
 }
 ```
 - Above code will make b wait for a which double waiting time, so in order to make them run concurrently, we can use `Promise.all`:
-- ```
+```
 const makeSmoothie = async () => {
     try{
         const a = await getFruit("pineapple");
