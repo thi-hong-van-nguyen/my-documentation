@@ -161,3 +161,56 @@ const fruitInspection = async () => {
     }
 }
 ```
+
+
+
+## USEFORM, YUP VALIDATION
+`useForm.js`
+```
+import { useState, useEffect } from "react";
+import * as yup from "yup";
+
+export const useForm = (initialValues, initialErrors, schema) => {
+  const [formValues, setFormValues] = useState(initialValues);
+  const [errors, setErrors] = useState(initialErrors);
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const validation = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => setErrors({ ...errors, [name]: "" }))
+      .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
+  };
+
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => setIsDisabled(!valid));
+  }, [formValues]);
+
+  const handleChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    const valueToUse = type === "checkbox" ? checked : value;
+    validation(name, valueToUse);
+    setFormValues({ ...formValues, [name]: valueToUse });
+  };
+
+  return [formValues, errors, handleChange, isDisabled];
+};
+```
+
+`Schema.js`
+```
+import * as yup from "yup";
+
+const loginSchema = yup.object().shape({
+  username: yup.string().trim().required("Username is required"),
+  password: yup.string().trim().required("Password is required field"),
+});
+
+export default loginSchema;
+```
+
+`Login.js`
+```
+const [formValues, errors, handleChange, isDisabled] = useForm(initialValues, initialErrors, schema)
+```
