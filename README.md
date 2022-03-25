@@ -218,5 +218,11 @@ const [formValues, errors, handleChange, isDisabled] = useForm(initialValues, in
 ## REDUX, REDUCER, ACTIONS
 - import {compose} from 'redux';
 - Instead of writing function nested in another function, we could write `compose(func1, func2, func3)` with func3 is the one nested deepest, and func1 is the outside function
-- 
+
+- Subscribe the changes of the state:
+```
+const subscriber = () => console.log("SUBSCRIBER", store.getState())
+store.subscribe(subscriber)
+```
+===> same with redux logger
 
