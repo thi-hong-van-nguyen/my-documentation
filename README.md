@@ -1,3 +1,5 @@
+# YOU SHOULD MAKE A CODE THAT EASY FOR YOU TO READ IN THE FUTURE, NOT A CLEAN CODE
+
 ## When change to new computer and can't push new repo to new repo on GitHub
 ### ERROR: 
 ```
@@ -225,4 +227,33 @@ const subscriber = () => console.log("SUBSCRIBER", store.getState())
 store.subscribe(subscriber)
 ```
 ===> same with redux logger
+
+## REACT
+- npm i 
+```
+"start:dev": "env-cmd --rc-file ./.env-cmdrc.json -e development, react-scripts start",
+    "build:dev": "env-cmd --rc-file ./.env-cmdrc.json -e development, react-scripts build",
+    "start:prod": "env-cmd --rc-file ./.env-cmdrc.json -e production, react-scripts start",
+    "build:prod": "env-cmd --rc-file ./.env-cmdrc.json -e production, react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint  \"src/**/*.{js,jsx}\""
+```
+- npm i -D @babel/core @babel-preset-react
+in the root. create a file called .babelrc, put it in the config
+```
+
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ]
+  ]
+} 
+```
+
 
