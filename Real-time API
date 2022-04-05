@@ -1,0 +1,4 @@
+# REAL TIME API
+## POLLING
+- We can design it so that if there is something wrong, the calls will postpone exponential time, 1s, 2s, 4s, 16s, etc...
+- Avoid DDoS (distributed denail-of-service)
