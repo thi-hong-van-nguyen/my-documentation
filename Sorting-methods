@@ -1,0 +1,53 @@
+    //   const sortFunc = (val) => {
+    //     if (val === "0") {
+    //       setQuery((query) =>
+    //         [...query].sort(function (x, y) {
+    //           return (
+    //             new Date(y.latestTimestamp).getTime() -
+    //             new Date(x.latestTimestamp).getTime()
+    //           );
+    //         })
+    //       );
+    //     }
+    //     if (val === "1") {
+    //       setQuery((query) =>
+    //         [...query].sort(function (x, y) {
+    //           return (
+    //             new Date(x.latestTimestamp).getTime() -
+    //             new Date(y.latestTimestamp).getTime()
+    //           );
+    //         })
+    //       );
+    //     }
+    //     if (val === "2") {
+    //       setQuery((query) => [...query].sort(sortAlpha("entity")));
+    //     }
+    //     if (val === "3") {
+    //       setQuery((query) => [...query].sort(sortAlpha("-entity")));
+    //     }
+    //   };
+
+    //   const handleSearch = (e) => {
+    //     const val = e.target.value.toLowerCase();
+    //     val === "" ? setSearching(false) : setSearching(true);
+    //     setSearchWord(val);
+    //     setQuery(
+    //       data.filter((item) => {
+    //         const { entity, latestTimestamp, email, cell, lastVisit } = item;
+    //         return (
+    //           entity.toLowerCase().includes(val) ||
+    //           latestTimestamp.toLowerCase().includes(val) ||
+    //           email.toLowerCase().includes(val) ||
+    //           cell.toLowerCase().includes(val) ||
+    //           lastVisit.toLowerCase().includes(val)
+    //         );
+    //       })
+    //     );
+    //     sortFunc(sortType);
+    //   };
+
+    //   const handleSort = (e) => {
+    //     const val = e.target.value;
+    //     setSortType(val);
+    //     sortFunc(val);
+    //   };
