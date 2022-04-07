@@ -1,0 +1,14 @@
+# Display flex
+## Display:flex columns
+- after you set the height for one row, you can stretch it to the whole div by:
+```
+.container {
+  display: flex; 
+  flex-direction: columns;
+  justify-content: between;
+ }
+ 
+ .div-child {
+  flex: 1 // set this for the other height.
+ }
+```
