@@ -256,4 +256,42 @@ in the root. create a file called .babelrc, put it in the config
 } 
 ```
 
+## HORIZONTAL SCROLL
+your content needs to be wide enough to require scrolling. One technique for doing this is to use white-space: nowrap; to prevent your content wrapping to the next line, like this:
+```
+.details-wrapper {
+    background-image: url(https://thelandscapephotoguy.com/wp-content/uploads/2019/01/landscape%20new%20zealand%20S-shape.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    padding: 1em 1em 0;
+}
+.details {
+    overflow: auto;
+    white-space: nowrap;
+    color: white;
+    padding-bottom: 1em;
+}
+
+<div class="details-wrapper">
+    <div class="details">
+        <div>this text is long and set not to wrap, so if we style it not to wrap then we should also be able to style it to scroll horizontally</div>
+        <div>this text is long and set not to wrap, so if we style it not to wrap then we should also be able to style it to scroll horizontally</div>
+        <div>this text is long and set not to wrap, so if we style it not to wrap then we should also be able to style it to scroll horizontally</div>
+        <div>this text is long and set not to wrap, so if we style it not to wrap then we should also be able to style it to scroll horizontally</div>
+    </div>
+</div>
+```
+
+The parent element will only be scrollable if the child element is larger than it, so you may need to add a width or min-width to your .details element. Currently it is just the width of its parent container and so your window will be scrollable on a screen narrower than 650px but the actual element wont.
+
+```
+.details-container {
+  width: 100%;
+}
+
+.details {
+  min-width: 650px;
+}
+```
 
