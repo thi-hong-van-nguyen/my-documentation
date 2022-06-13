@@ -1,0 +1,30 @@
+# Custom SCROLL BAR for entire application:
+
+```
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    background-color: #c4c4c4;
+}
+
+::-webkit-scrollbar-button {
+    height: 12px;
+}
+
+.scroll-bar-y {
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+}
+
+.scroll-bar-x {
+    overflow-x: scroll !important;
+    overflow-y: hidden;
+}
+
+```
