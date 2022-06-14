@@ -1,0 +1,9 @@
+# ASYNC AWAIT and MAP 
+- If we only use async await in .map() method, it WILL NOT work. use Promise instead
+- Example:
+```
+function getData = async () => {
+  const res = await axios.get('/api/endpoint')
+  const newData = await Promise.all(res.data.map(()=> logic in here))
+}
+```
