@@ -150,14 +150,7 @@ function login({ username, password }) {
             "Content-Type": "application/json",
             "cache-control": "no-cache",
         },
-        data: {
-            username,
-            password,
-            machineName: "string",
-            publicIP: "string",
-            machineGUID: "string",
-            apiKey: "string",
-        },
+        data,
     };
 
     // console.log(config);
