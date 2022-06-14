@@ -1,0 +1,195 @@
+## PROMISE, ASYNC AWAIT
+- Promise basic:
+```
+const codeBlocker = () => {
+    return new Promise((resolve, reject)=> {
+        let i = 0;
+        while(i< 1000000){i++};
+        resolve("billion loops done")
+    })
+}
+
+console.log("console log 1")
+codeBlocker().then(log)
+console.log("console log 2")
+```
+result:
+console log 1 => `Elapse: 0ms`
+console log 2  => `Elapse: 730ms` => The rum time is deplayed because the while loop blocks the main thread
+billions loops done  => `Elapse: 731ms`
+
+### Solution:
+- put the while loops inside of the Promises call back, that way other operations won't be block by the loops
+- Do this instead:
+```
+const codeBlocker = () => {
+    return Promise.resolve().then(v => {
+        let i = 0;
+        while(i< 1000000){i++};
+        return "billion loops done"
+    })
+}
+```
+
+- We can either use `async` keyword (`async function Func(){}`), or `return Promise.resolve()`
+
+### async await:
+```
+const makeSmoothie = async () => {
+    const a = await getFruit("pineapple");
+    const b = await getFruit("strawberry");
+
+    return [a, b]
+}
+```
+- Above code will make b wait for a which double waiting time, so in order to make them run concurrently, we can use `Promise.all`:
+```
+const makeSmoothie = async () => {
+    try{
+        const a = getFruit("pineapple");
+        const b = getFruit("strawberry");
+        const smothie = await Promise.all([a, b]);
+        return smothie
+    } catch (err) {
+        console.log(err);
+        return "error message"
+    }
+}
+
+makeSmoothie().then().catch(err => console.log({err}))
+```
+
+### async await and foor loops, map
+- If we code something like `list.map(item => await...)`, it won't work. We need to use for loop instead
+```
+const smoothie = async () => {
+    for await (const fruit of smothie) {
+        console.log(fruit)
+    }
+}
+```
+- We can also use async await for if statement:
+```
+const fruitInspection = async () => {
+    if (await getFruit('peach') === "peach"){
+        console.log("it is a peach")
+    }
+}
+```
+
+## PROMISE ALL
+- function call api:
+```
+function genericGetAPI(endpoint, data) {
+    let url = API_ROOT;
+    url += endpoint;
+
+    let query = new URLSearchParams(data).toString();
+    query = query.replace(new RegExp("\\+", "g"), " "); // replace "+" with " ", can be replaced by string.replaceAll("+", " ")
+    url += "?" + query;
+
+    var config = {
+        method: "get",
+        url,
+        headers: {
+            "cache-control": "no-cache",
+            ...authHeader(),
+        },
+    };
+    return new Promise((resolve, reject) => {
+        axios(config)
+            .then((response) => {
+                if (!response.status === 200 || !response.status === 204) {
+                    const error = response.statusText;
+                    reject(error);
+                }
+                resolve(response.data);
+            })
+            .catch(function (error) {
+                if (error.response === undefined) {
+                    resolve("no data");
+                    console.log("500 Internal server error");
+                }
+                if (error.response) {
+                    if (error.response.status === 401) {
+                        if (store.get("token")) {
+                            Swal.fire({
+                                title: "401 Unauthorized",
+                                text: "Your session was inactive and timed out. Please re-login.",
+                                icon: "warning",
+                            });
+                        }
+                        logout();
+                        window.location = "/login";
+                    } else {
+                        resolve("no data");
+                        let errorObj = errorCodeDesc[error.response.status];
+                        let title = errorObj ? errorObj.title : "";
+                        let text = errorObj ? errorObj.text : "Error";
+                        let icon = errorObj ? errorObj.icon : "warning";
+                        Swal.fire({
+                            title: title,
+                            text: text,
+                            icon: icon,
+                        });
+                    }
+                } else {
+                    resolve("no data");
+                    console.log("500 Internal server error");
+                }
+                reject(error);
+            });
+    });
+}
+
+function login({ username, password }) {
+    var config = {
+        method: "post",
+        url: `${API_ROOT}/Login/Auth`,
+        headers: {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache",
+        },
+        data: {
+            username,
+            password,
+            machineName: "string",
+            publicIP: "string",
+            machineGUID: "string",
+            apiKey: "string",
+        },
+    };
+
+    // console.log(config);
+
+    return new Promise((resolve, reject) => {
+        axios(config)
+            .then((response) => {
+                if (!response.status === 200) {
+                    const error = response.statusText;
+                    reject(error);
+                }
+                resolve(response.data);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    });
+}
+  
+```
+- Call api:
+```
+  try {
+              
+                const res = await Promise.all([
+                    ApiCalls.genericPostAPI("/endpoint", data),
+                    ApiCalls.genericPostAPI("/endpoint", data),
+                ]);
+
+               );
+            } catch (err) {
+                setTableLoading(false);
+            }
+ ```
+
