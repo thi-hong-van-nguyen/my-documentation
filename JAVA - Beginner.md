@@ -53,12 +53,56 @@ String str = sc.nextLine();
 sc.equals("Some string here");	
 ```
 
-### Array:
+### ARRAY:
 ```
 String[] strArr = new String[5];
+strArr[0] = "hello";
+strArr[1] = "world";
 int[] intArr = new int[5];
 
-
+// another way to assign values to an array:
+String[] arr = {"hello", "world", "goodday"};
 ```
 
+### FOR LOOP:
+```
+for (int i = 0; i <= 10; i++){
+	// logic in here
+}
+// in case we want to loop through everything in the array:
+int[] arr = {1, 4, 6, 2};
+for (int element:arr) {
+	System.out.println(element) // output: 1, 4, 6, 2 are printed 4 times 
+}
+```
 
+### SET and LIST
+- Set and HashSet
+```
+import java.util.set;
+import java.util.HashSet;
+
+Set<Integer> a = new HashSet<Integer>();
+a.add(4);
+a.add(1);
+// Note that HashSet will remove duplicate elements and all the elements will NOT be in order of inputting
+```
+- ArrayList
+```
+import Java.util.ArrayList;
+
+ArrayList<Integer> b = new ArrayList<Integer>();
+b.add(2);
+t.set(index, value);
+b.subList(index, index) // not counting the last index.
+// Note that ArrayList do NOT remove duplicate and the elements will be in input order
+```
+
+- LinkedHashSet
+```
+import Java.util.LinkedHashSet;
+
+LinkedHashSet<Integer> b = new LinkedHashSet<Integer>();
+b.add(2);
+// Note that ArrayList remove duplicate and the elements will be in alpha/number order
+```
