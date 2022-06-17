@@ -29,10 +29,10 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		String scanned = sc.next();
-    int scanned = sc.nextInt(); // for integer input
-    bollean scanned = sc.nextBoolean(); // true false input
-    double scanned = sc.nextDouble(); // an integer or float
+		String scanned = sc.nextLine(); // for string input
+	        int scanned = sc.nextInt(); // for integer input
+	        bollean scanned = sc.nextBoolean(); // true false input
+	        double scanned = sc.nextDouble(); // an integer or float
 		
 		System.out.println(scanned);
 	}
@@ -46,4 +46,19 @@ String str = "578";
 int x = Integer.parseInt(scanned);
 ```
 
-### 
+### compare two strings:
+```
+Scanner sc = new Scanner(System.in);
+String str = sc.nextLine();
+sc.equals("Some string here");	
+```
+
+### Array:
+```
+String[] strArr = new String[5];
+int[] intArr = new int[5];
+
+
+```
+
+
