@@ -106,3 +106,14 @@ LinkedHashSet<Integer> b = new LinkedHashSet<Integer>();
 b.add(2);
 // Note that ArrayList remove duplicate and the elements will be in alpha/number order
 ```
+
+## MAP
+- key and value can be any type: string, number,.... Keys are not in order;
+```
+import java.util.Map;
+import java.util.HashMap;
+Map m = new Hashmap();
+m.put(key, value);
+System.out.println(m.get(key));
+
+```
