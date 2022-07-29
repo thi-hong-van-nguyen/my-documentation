@@ -1,0 +1,1 @@
+- animation should be 200-500ms
