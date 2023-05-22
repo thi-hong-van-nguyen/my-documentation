@@ -1,5 +1,7 @@
 ## Create a box shadow effect for a container when scrolling down or up.
 
+![image](https://github.com/thi-hong-van-nguyen/my-documentation/assets/85480610/bc453e87-dc5d-48af-a2e5-47e4c3b3f5e8)
+
 HTML
 ```
 <div class='scroll-box-shadow'>
@@ -87,3 +89,6 @@ CSS
     );
 }
 ```
+
+
+
