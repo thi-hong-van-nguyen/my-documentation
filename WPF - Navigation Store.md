@@ -59,7 +59,7 @@ public class LoginCommand : CommandBase
         }
     }
 ```
- the `Loginommand` class is responsible for executing the login operation in the application. When the Execute method is called, it updates the current view model in the provided NavigationStore instance to a new instance of the HomeVM view model, indicating a transition to the Home view.
+The `LoginCommand` class is responsible for executing the login operation in the application. When the Execute method is called, it updates the current view model in the provided NavigationStore instance to a new instance of the HomeVM view model, indicating a transition to the Home view.
  
  Similarly, we have `LogoutCommand.cs`:
  ```
