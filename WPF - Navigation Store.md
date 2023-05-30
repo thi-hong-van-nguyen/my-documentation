@@ -77,7 +77,7 @@ The `LoginCommand` class is responsible for executing the login operation in the
             _navigationStore.CurrentVM = new LoginVM(_navigationStore);
         }
     }
-    ```
+```
     
     However, we might need to modify `LoginCommand` so that we can perform certain tasks before changing the view (for instance, validate input username & password, then call API to authenticate the user). Therefore, we can adjust `LoginCommand.cs` as follow:
 ```
